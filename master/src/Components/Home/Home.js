@@ -1,8 +1,10 @@
-import { Header } from "../Header/Header";
+import { Header } from "../Header/Header.js";
 
 const Home = () => {
     return (
-        <Header siteName={"Home"} />
+        <div id={ "home" }>
+            <Header siteName={ "Home" } />
+        </div>
     )
 }
 
