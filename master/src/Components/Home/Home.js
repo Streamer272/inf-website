@@ -1,9 +1,13 @@
 import { Header } from "../Header/Header.js";
+import "./Home.css";
 
 const Home = () => {
     return (
         <div id={ "home" }>
-            <Header siteName={ "Home" } />
+            <Header siteName={ "Domov" } />
+            <div className={"div first"}>
+                <h1 className={ "secondary-title" }>Chceš sa naučiť programovať?</h1>
+            </div>
         </div>
     )
 }
