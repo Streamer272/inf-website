@@ -6,7 +6,7 @@ const Home = () => {
         <div id={ "home" }>
             <Header siteName={ "Domov" } />
             <div className={"div first"}>
-                <h1 className={ "secondary-title" }>Chceš sa naučiť programovať?</h1>
+                <h1 className={ "secondary-title" } id={ "title" }>Chceš sa naučiť programovať?</h1>
             </div>
         </div>
     )
