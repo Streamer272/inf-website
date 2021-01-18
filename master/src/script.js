@@ -1,6 +1,6 @@
 let titleAnimationRunning = false;
 let globalTitleOpacity = 1;
-const animationStartScrollHeight = 300;
+const animationStartScrollHeight = 200;
 
 
 const titleDisappearAnimation = () => {

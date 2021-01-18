@@ -1,0 +1,22 @@
+.course {
+    margin-left: 33%;
+    background-color: #f0f8ff;
+    width: 500px;
+    min-height: 300px;
+}
+
+.course-name {
+    float: left;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.course-price {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-right: 5px;
+}

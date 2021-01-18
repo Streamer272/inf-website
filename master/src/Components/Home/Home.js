@@ -1,6 +1,6 @@
 import { Header } from "../Header/Header.js";
-import "./Home.css";
 import { Top } from "../2Top-Button/2Top.js";
+import "./Home.css";
 
 const Home = () => {
     return (
@@ -8,6 +8,7 @@ const Home = () => {
             <Header siteName={ "Domov" } />
 
             <div className={ "div first" }>
+                <Top />
                 <h1 className={ "secondary-title" } id={ "title" }>Chceš sa naučiť programovať?</h1>
             </div>
 
@@ -32,12 +33,6 @@ const Home = () => {
                     className={ "second-image-2" }
                 />
             </div>
-
-            <div className={ "div" }>
-                me
-            </div>
-
-            <Top />
         </div>
     )
 }
