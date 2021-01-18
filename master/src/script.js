@@ -1,5 +1,6 @@
 let titleAnimationRunning = false;
-let globalOpacity = 1;
+let globalTitleOpacity = 1;
+const animationStartScrollHeight = 300;
 
 
 const titleAnimation = () => {
@@ -7,9 +8,9 @@ const titleAnimation = () => {
 
     const getScrollRight = (state) => {
         if (state === "down") {
-            return window.scrollY >= 150;
+            return window.scrollY >= animationStartScrollHeight;
         } else {
-            return window.scrollY < 150;
+            return window.scrollY < animationStartScrollHeight;
         }
     }
 
@@ -27,15 +28,15 @@ const titleAnimation = () => {
     let stopOpacity;
     let mathOpacity;
 
-    if (scroll >= 150) {
+    if (scroll >= animationStartScrollHeight) {
         type = "down";
-        globalOpacityEquation = globalOpacity === 0;
+        globalOpacityEquation = globalTitleOpacity === 0;
         startOpacity = 1.0;
         stopOpacity = "0";
         mathOpacity = -0.01;
     } else {
         type = "up";
-        globalOpacityEquation = globalOpacity === 1;
+        globalOpacityEquation = globalTitleOpacity === 1;
         startOpacity = 0;
         stopOpacity = "1";
         mathOpacity = 0.01;
@@ -52,7 +53,7 @@ const titleAnimation = () => {
                 if (getAnimationFinished(type, opacity)) {
                     title.style.opacity = stopOpacity;
                     titleAnimationRunning = false;
-                    globalOpacity = parseInt(stopOpacity);
+                    globalTitleOpacity = parseInt(stopOpacity);
                     clearInterval(id);
                 } else {
                     opacity += mathOpacity;
@@ -61,7 +62,7 @@ const titleAnimation = () => {
             } else {
                 title.style.opacity = stopOpacity;
                 titleAnimationRunning = false;
-                globalOpacity = stopOpacity;
+                globalTitleOpacity = stopOpacity;
                 clearInterval(id);
             }
         }
