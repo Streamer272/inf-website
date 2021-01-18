@@ -1,5 +1,6 @@
 import { Header } from "../Header/Header.js";
 import "./Home.css";
+import { Top } from "../2Top-Button/2Top.js";
 
 const Home = () => {
     return (
@@ -35,6 +36,8 @@ const Home = () => {
             <div className={ "div" }>
                 me
             </div>
+
+            <Top />
         </div>
     )
 }
