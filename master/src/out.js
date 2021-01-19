@@ -3,7 +3,7 @@ let globalTitleOpacity = 1;
 const animationStartScrollHeight = 200;
 
 
-const disappearAnimation = ( 
+const disappearAnimationRun = ( 
     isScrollRight,
     isAnimationFinished,
     startOpacity,
@@ -36,34 +36,54 @@ const disappearAnimation = (
     const intervalID = setInterval(frame, 10);
 }
 
+// dont forget to set globalAnimationRunning to true on start!
+const disappearAnimation = (
+    endCallBack, // set global opacity and animation running to some value
+    globalAnimationRunning,
+    globalElementOpacity,
+    reverseY
+    ) => {
 
-const startTitleAnimation = () => {
-    if (titleAnimationRunning) {
-        return;
-    }
-
+    // state declaration
     let state;
-    if (window.scrollY >= animationStartScrollHeight) {
+    if ((window.scrollY >= animationStartScrollHeight && !reverseY) || (window.scrollY < animationStartScrollHeight && reverseY)) {
         state = "down";
     }
     else {
         state = "up"
     }
 
-    // is scroll right
-    let isStateSame;
+    // is animation already running
+    if (globalAnimationRunning) {
+        return;
+    }
+
+    // is animation already finished on animation start
     if ("down" === state) {
-        isStateSame = () => {
+        if (globalElementOpacity === 0) {
+            return;
+        }
+    }
+    else {
+        if (globalElementOpacity === 1) {
+            return;
+        }
+    }
+
+    // is scroll right function
+    let canAnimationContinueByState;
+    if (("down" === state && !reverseY) || ("up" === state && reverseY)) {
+        canAnimationContinueByState = () => {
             return window.scrollY >= animationStartScrollHeight;
         }
     }
     else {
-        isStateSame = () => {
+        canAnimationContinueByState = () => {
             return window.scrollY < animationStartScrollHeight;
         }
     }
 
-    // when is animation finished
+    // is animation finished check function
     let isAnimationFinished;
     if ("down" === state) {
         isAnimationFinished = ( opacity ) => {
@@ -76,19 +96,7 @@ const startTitleAnimation = () => {
         }
     }
 
-    // is animation finished
-    if ("down" === state) {
-        if (globalTitleOpacity === 0) {
-            return;
-        }
-    }
-    else {
-        if (globalTitleOpacity === 1) {
-            return;
-        }
-    }
-
-    // start and stop opacity
+    // start and stop opacity declaration
     let startOpacity, stopOpacity;
     if ("down" === state) {
         startOpacity = 1;
@@ -99,7 +107,7 @@ const startTitleAnimation = () => {
         stopOpacity = 1;
     }
 
-    // opacity operator
+    // opacity operator declaration
     let opacityOperator;
     if ("down" === state) {
         opacityOperator = -0.01
@@ -108,15 +116,9 @@ const startTitleAnimation = () => {
         opacityOperator = 0.01
     }
 
-    let endCallBack;
-    endCallBack = ( endOpacity, endAnimationRunning ) => {
-        titleAnimationRunning = endAnimationRunning;
-        globalTitleOpacity = endOpacity;
-    }
-
-    titleAnimationRunning = true;
+    // animation start
     disappearAnimation(
-        isStateSame,
+        canAnimationContinueByState,
         isAnimationFinished,
         startOpacity,
         stopOpacity,
@@ -127,19 +129,16 @@ const startTitleAnimation = () => {
 }
 
 
-const topButtonControl = () => {
-    const scroll = window.scrollY;
-    const toTopButton = document.getElementById("2top")
-
-    if (scroll >= animationStartScrollHeight) {
-        toTopButton.style.display = "block";
-    } else {
-        toTopButton.style.display = "none"
+const startTitleAnimation = () => {
+    const callback = ( opacity, animationRunning ) => {
+        globalTitleOpacity = opacity;
+        globalTitleAnimationRunning = animationRunning;
     }
-}
 
-
-window.onscroll = () => {
-    startTitleAnimation();
-    topButtonControl();
+    disappearAnimation(
+        callback,
+        globalTitleAnimationRunning,
+        globalTitleOpacity,
+        false
+    )
 }
