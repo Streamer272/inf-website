@@ -1,6 +1,28 @@
 let globalTitleAnimationRunning = false;
 let globalTitleOpacity = 1;
-const animationStartScrollHeight = 200;
+let globalTopButtonAnimationRunning = false;
+let globalTopButtonOpacity = 1;
+const animationStartScrollHeight = 300;
+
+
+const fpsToOperator = ( fps ) => {
+    if (fps === 1) {
+        return 1;
+    }
+    else if (fps === 10) {
+        return 0.1;
+    }
+    else if (fps === 100) {
+        return 0.01;
+    }
+    else if (fps === 1000) {
+        return 0.001;
+    }
+}
+
+const fpsToTime = ( fps ) => {
+    return 1000 / fps;
+}
 
 
 const disappearAnimationRun = ( 
@@ -10,7 +32,8 @@ const disappearAnimationRun = (
     stopOpacity,
     opacityOperator,
     elementId,
-    endCallback
+    endCallback,
+    between_frame_time
     ) => {
     const element = document.getElementById(elementId);
 
@@ -33,27 +56,13 @@ const disappearAnimationRun = (
         }
     }
 
-    const intervalID = setInterval(frame, 10);
+    const intervalID = setInterval(frame, between_frame_time);
 }
-
-/*
-FPS | devide | operator | interval-time-equation | interval-time
-
-10    |   10      |      1       |      1000 / operator       |       1000
-100  |   10      |      10     |      1000 / operator       |        100
-1000|   10      |      100   |      1000 / operator       |          10
-
-in = out
-1 = 1
-10 = 0.1
-100 = 0.01
-1000 = 0.001
-*/
 
 // dont forget to set globalAnimationRunning to true on start!
 const disappearAnimation = (
-    endCallBack, // set global opacity and animation running to some value
-    globalAnimationRunning,
+    elementId,
+    finishAnimationCallback, // set global opacity and animation running to some value
     globalElementOpacity,
     reverseY,
     fps
@@ -68,19 +77,16 @@ const disappearAnimation = (
         state = "up"
     }
 
-    // is animation already running
-    if (globalAnimationRunning) {
-        return;
-    }
-
     // is animation already finished on animation start
     if ("down" === state) {
         if (globalElementOpacity === 0) {
+            finishAnimationCallback( 0, false )
             return;
         }
     }
     else {
         if (globalElementOpacity === 1) {
+            finishAnimationCallback( 1, false )
             return;
         }
     }
@@ -125,10 +131,10 @@ const disappearAnimation = (
     // opacity operator declaration
     let opacityOperator;
     if ("down" === state) {
-        opacityOperator = -0.01
+        opacityOperator = -fpsToOperator(fps);
     }
     else {
-        opacityOperator = 0.01
+        opacityOperator = fpsToOperator(fps);
     }
 
     // animation start
@@ -138,8 +144,9 @@ const disappearAnimation = (
         startOpacity,
         stopOpacity,
         opacityOperator,
-        "title",
-        endCallBack
+        elementId,
+        finishAnimationCallback,
+        fpsToTime(fps)
     )
 }
 
@@ -150,28 +157,39 @@ const startTitleAnimation = () => {
         globalTitleAnimationRunning = animationRunning;
     }
 
-    disappearAnimation(
-        callback,
-        globalTitleAnimationRunning,
-        globalTitleOpacity,
-        false
-    )
-}
-
-
-const topButtonControl = () => {
-    const scroll = window.scrollY;
-    const toTopButton = document.getElementById("2top")
-
-    if (scroll >= animationStartScrollHeight) {
-        toTopButton.style.display = "block";
-    } else {
-        toTopButton.style.display = "none"
+    if (!globalTitleAnimationRunning) {
+        globalTitleAnimationRunning = true;
+        disappearAnimation(
+            "title",
+            callback,
+            globalTitleOpacity,
+            false,
+            100
+        )
     }
 }
 
 
+const startTopButtonAnimation = () => {
+    console.log("starting top button animation")
+    const callback = ( opacity, animationRunning ) => {
+        globalTopButtonOpacity = opacity;
+        globalTopButtonAnimationRunning = animationRunning;
+    }
+
+    if (!globalTopButtonAnimationRunning) {
+        globalTopButtonAnimationRunning = true;
+        disappearAnimation(
+            "2top",
+            callback,
+            globalTopButtonOpacity,
+            true,
+            100
+        )
+    }
+}
+
 window.onscroll = () => {
     startTitleAnimation();
-    topButtonControl();
+    startTopButtonAnimation();
 }

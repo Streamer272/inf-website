@@ -1,5 +1,5 @@
 .toTop-div {
-    display: none;
+    display: inline-block;
     position: fixed;
     background-color: #00ce00;
     font-size: 30px;
@@ -9,4 +9,5 @@
     right: 20px;
     bottom: 20px;
     cursor: pointer;
+    opacity: 0;
 }
