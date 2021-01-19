@@ -6,18 +6,7 @@ const animationStartScrollHeight = 300;
 
 
 const fpsToOperator = ( fps ) => {
-    if (fps === 1) {
-        return 1;
-    }
-    else if (fps === 10) {
-        return 0.1;
-    }
-    else if (fps === 100) {
-        return 0.01;
-    }
-    else if (fps === 1000) {
-        return 0.001;
-    }
+    return fps ** -1;
 }
 
 const fpsToTime = ( fps ) => {

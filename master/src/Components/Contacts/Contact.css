@@ -1,15 +1,24 @@
+.Contact {
+    margin: 20px auto;
+    width: 180px;
+    text-align: center;
+}
+
 .logo {
+    display: block;
     height: 50px;
     width: 50px;
     float: left;
 }
 
 .platform {
+    display: block;
     font-size: 25px;
     font-weight: bold;
-    float: left;
+    padding-top: 11px;
 }
 
 .name {
+    display: block;
     font-size: 20px;
 }

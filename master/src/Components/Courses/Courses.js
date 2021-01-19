@@ -5,7 +5,7 @@ import { Course } from "./Course";
 
 const Courses = () => {
     return (
-        <div id={ "home" }>
+        <div id={ "courses" }>
             <Header siteName={ "Kurzy" } />
 
             <div className={ "title-div" }>

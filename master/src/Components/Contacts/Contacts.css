@@ -1,0 +1,11 @@
+.gift {
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-image: url("https://www.pngfind.com/pngs/m/256-2569921_gift-box-present-icon-png-image-gift-box.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
