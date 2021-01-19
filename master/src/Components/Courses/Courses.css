@@ -13,3 +13,15 @@
     font-size: 50px;
     opacity: 1;
 }
+
+.course-title {
+    margin-left: 500px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.secondary-course-title {
+    margin-left: 550px;
+    font-size: 30px;
+    font-weight: bold;
+}

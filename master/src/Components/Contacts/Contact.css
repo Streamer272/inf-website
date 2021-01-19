@@ -1,0 +1,15 @@
+.logo {
+    height: 50px;
+    width: 50px;
+    float: left;
+}
+
+.platform {
+    font-size: 25px;
+    font-weight: bold;
+    float: left;
+}
+
+.name {
+    font-size: 20px;
+}

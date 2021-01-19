@@ -1,8 +1,10 @@
-.course {
+.course-div {
+    margin-top: 20px;
     margin-left: 33%;
-    background-color: #f0f8ff;
+    background-color: lightblue;
     width: 500px;
-    min-height: 300px;
+    height: 200px;
+    overflow: auto;
 }
 
 .course-name {
@@ -23,6 +25,20 @@
     margin-right: 5px;
 }
 
+.subjects-div {
+    float: left;
+    display: inline-block;
+    margin-right: 250px;
+    margin-top: -50px;
+    padding: 5px;
+    height: 100px;
+}
+
 .subject {
     font-size: 20px;
+}
+
+.subject-header {
+    font-size: 20px;
+    font-weight: bold;
 }

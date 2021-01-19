@@ -7,6 +7,7 @@ const CourseSubjects = ({ subjects }) => {
 
     return (
         <div className={ "subjects-div" }>
+            <p className={ "subject-header" }>Kurzy v tomto balíčku:</p>
             <ul>{ listItems }</ul>
         </div>
     );
@@ -14,10 +15,10 @@ const CourseSubjects = ({ subjects }) => {
 
 const Course = ({ courseName, coursePrice, courseSubjects }) => {
     return (
-        <div className={ "course" }>
+        <div className={ "course-div" } id={ "course-div" }>
             <p className={ "course-name" }>{ courseName }</p>
-            <p className={ "course-price" }>{ coursePrice }€</p>
-            <br /><br /><br /><br />
+            <p className={ "course-price" }>{ coursePrice }€ / month</p>
+            <br /><br />
             <CourseSubjects subjects={ courseSubjects } />
         </div>
     );
