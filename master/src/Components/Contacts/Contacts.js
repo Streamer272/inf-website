@@ -10,7 +10,7 @@ const Contacts = () => {
 
             <div className={ "title-div" }>
                 <Top />
-                <h1 className={ "secondary-title" } id={ "title" }>Kontakt na organizáciu</h1>
+                <h1 className={ "secondary-title" } id={ "title" }>Kontakt na sprostredkovateľa</h1>
             </div>
 
             <Contact contactPlatform={ "Instagram" } contactName={ "@danielsvitan" } contactImage={ "https://upload" +

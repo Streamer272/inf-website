@@ -2,6 +2,7 @@ import { Header } from "../Header/Header";
 import { Top } from "../2Top-Button/2Top.js";
 import "./Courses.css";
 import { Course } from "./Course";
+import { BasketMiniature } from "./Basket/Basket-miniature";
 
 const Courses = () => {
     return (
@@ -12,6 +13,8 @@ const Courses = () => {
                 <Top />
                 <h1 className={ "secondary-title" } id={ "title" }>Všetky naše kurzy</h1>
             </div>
+
+            <BasketMiniature />
 
             <div>
                 <h1 className={ "course-title" }>Vývoj Webu:</h1>

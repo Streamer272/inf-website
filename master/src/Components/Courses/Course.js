@@ -1,4 +1,5 @@
 import "./Course.css";
+import { AddToBasket } from "./Basket/Add2Basket";
 
 const CourseSubjects = ({ subjects }) => {
     const listItems = subjects.map((subject) =>
@@ -17,9 +18,12 @@ const Course = ({ courseName, coursePrice, courseSubjects }) => {
     return (
         <div className={ "course-div" } id={ "course-div" }>
             <p className={ "course-name" }>{ courseName }</p>
+
             <p className={ "course-price" }>{ coursePrice }€ / month</p>
+
             <br /><br />
             <CourseSubjects subjects={ courseSubjects } />
+            <AddToBasket name={ courseName } price={ coursePrice }/>
         </div>
     );
 }

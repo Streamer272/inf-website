@@ -1,12 +1,12 @@
 import "./Add2Basket.css";
-import { setPrice } from "./Basket";
+import { addThing } from "./Basket-miniature";
 
-const addToBasket = ( name, price ) => {
+const AddToBasket = ({ name, price }) => {
     return (
-        <div className={ "addToBasket" } onClick={ setPrice(price) }>
-            <p>Buy</p>
+        <div className={ "addToBasket" } onClick={ () => { addThing(price, name); } }>
+            <p className={ "buy-text" }>Buy</p>
         </div>
     )
 }
 
-export { addToBasket };
+export { AddToBasket };

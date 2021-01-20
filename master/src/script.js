@@ -160,7 +160,6 @@ const startTitleAnimation = () => {
 
 
 const startTopButtonAnimation = () => {
-    console.log("starting top button animation")
     const callback = ( opacity, animationRunning ) => {
         globalTopButtonOpacity = opacity;
         globalTopButtonAnimationRunning = animationRunning;
