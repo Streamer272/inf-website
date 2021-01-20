@@ -1,9 +1,9 @@
 import "./Add2Basket.css";
-import { addThing } from "./Basket-miniature";
+import { addToBasket } from "./BasketController";
 
 const AddToBasket = ({ name, price }) => {
     return (
-        <div className={ "addToBasket" } onClick={ () => { addThing(price, name); } }>
+        <div className={ "addToBasket" } onClick={ () => { addToBasket(price, name); } }>
             <p className={ "buy-text" }>Buy</p>
         </div>
     )

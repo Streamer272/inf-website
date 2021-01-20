@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-#number {
+.basket-things-number {
     position: fixed;
     top: 120px;
     right: 10px;
