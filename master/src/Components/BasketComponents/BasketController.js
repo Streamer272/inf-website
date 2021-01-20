@@ -3,23 +3,27 @@ import "./BasketController.css";
 let addToBasket, getBasket;
 
 const BasketController = () => {
-    let broughtItems = [], setBroughtItems = ( toAdd ) => {
+    let broughtItems = [];
+    let setBroughtItems = ( toAdd ) => {
         broughtItems.push(toAdd);
     }
 
     addToBasket = (price, thing ) => {
         setBroughtItems([thing, price]);
         document.getElementById("basket-things-number").innerHTML = parseInt(document.getElementById(
-            "basket-things-number").innerHTML
-        ) + 1;
-    }
-
-    getBasket = () => {
-        return broughtItems;
+            "basket-things-number").innerHTML) + 1;
     }
 
     const goToBasket = () => {
-        window.location = "/basket";
+        alert(broughtItems);
+        let urlData = "";
+
+        for (let index = 0; index < broughtItems.length; index++) {
+            urlData += broughtItems[index];
+            alert(broughtItems[index]);
+        }
+
+        window.location = "/basket/items=" + urlData;
     }
 
     return (
