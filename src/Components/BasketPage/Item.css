@@ -1,0 +1,17 @@
+.item-div {
+    width: 500px;
+    height: 50px;
+    background-color: lightblue;
+    margin: 0 auto 20px;
+    padding: 5px 10px 10px;
+}
+
+.name {
+    display: inline-block;
+    text-align: center;
+}
+
+.price {
+    display: inline-block;
+    float: right;
+}

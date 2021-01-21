@@ -1,0 +1,24 @@
+.basket {
+    background-color: aliceblue;
+}
+
+.basket-title {
+    margin-left: 30%;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.basket-explain {
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.basket-explain-name {
+    margin-left: 37%;
+}
+
+.basket-explain-price {
+    margin-left: 14.5%;
+}

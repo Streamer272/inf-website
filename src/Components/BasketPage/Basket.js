@@ -1,4 +1,7 @@
 import { Header } from "../Header/Header";
+import { Item } from "./Item";
+import { PayButton } from "./PayButton";
+import "./Basket.css";
 
 let removeItem;
 
@@ -26,10 +29,27 @@ const Basket = () => {
         items.splice(items.indexOf(item), 1);
     }
 
+    console.log(items);
+
     return (
         <div id={ "basket" } >
             <Header siteName={ "Nákupný košík" } />
-            <p>Items: { items.map((item) => { return( <p>{ item }</p> ) } ) }</p>
+            <div className={ "basket" } >
+                <h2 className={ "basket-title" }>Košík</h2>
+                <br />
+                <p className={ "basket-explain basket-explain-name" } >Názov kurzu:</p>
+                <p className={ "basket-explain basket-explain-price" } >Cena kurzu:</p>
+                {
+                    items.map(
+                    (item) => {
+                        return(
+                            <Item item={ item } />
+                        )
+                    }
+                )
+                }
+                <PayButton />
+            </div>
         </div>
     )
 }
