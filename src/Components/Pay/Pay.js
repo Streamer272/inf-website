@@ -10,6 +10,7 @@ const Pay = () => {
 
     const payLike = () => {
         alert("Payment successful...");
+        window.location = "/courses";
     }
 
     return (
