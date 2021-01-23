@@ -8,7 +8,7 @@ let removeItem;
 const Basket = () => {
     let url = window.location;
 
-    url = url.toString().replace("http://localhost:3000/basket/items=", "")
+    url = url.toString().replace("http://localhost:3000/basket/items=", "");
     while (url.includes("%20")) {
         url = url.toString().replace("%20", " ");
     }
@@ -29,7 +29,12 @@ const Basket = () => {
         items.splice(items.indexOf(item), 1);
     }
 
-    console.log(items);
+    let price = 0;
+    for (let index = 0; index < items.length; index++) {
+        let itemPrice = items[index].toString().split(",")[1];
+        price += parseFloat(itemPrice);
+        console.log("Adding to price " + parseFloat(itemPrice))
+    }
 
     return (
         <div id={ "basket" } >
@@ -48,7 +53,7 @@ const Basket = () => {
                     }
                 )
                 }
-                <PayButton />
+                <PayButton price={ price } />
             </div>
         </div>
     )
