@@ -31,8 +31,9 @@ const Contacts = () => {
             "preview.redd.it/iDdntscPf-nfWKqzHRGFmhVxZm4hZgaKe5oyFws-yzA.png?auto=webp&s=38648ef0dc2c3fce76" +
             "d5e1d8639234d8da0152b2" } />
 
-            <div className={ "gift" } onClick={ window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ") }>
-            </div>
+            <div className={ "gift" } onClick={ () => {
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+            } } />
         </div>
     )
 }

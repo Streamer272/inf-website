@@ -3,6 +3,7 @@ let globalTitleOpacity = 1;
 let globalTopButtonAnimationRunning = false;
 let globalTopButtonOpacity = 1;
 const animationStartScrollHeight = 300;
+const baseFPS = 120;
 
 
 const fpsToOperator = ( fps ) => {
@@ -153,7 +154,7 @@ const startTitleAnimation = () => {
             callback,
             globalTitleOpacity,
             false,
-            100
+            baseFPS
         )
     }
 }
@@ -172,10 +173,11 @@ const startTopButtonAnimation = () => {
             callback,
             globalTopButtonOpacity,
             true,
-            100
+            baseFPS
         )
     }
 }
+
 
 window.onscroll = () => {
     startTitleAnimation();

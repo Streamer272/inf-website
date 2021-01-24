@@ -3,6 +3,15 @@ import { Top } from "../2Top-Button/2Top.js";
 import "./Home.css";
 
 const Home = () => {
+    setTimeout(() => {
+        let element = document.getElementById("mail");
+        element.onclick = () => {
+            window.open("https://mail.google.com/mail/u/0/#inbox?compose=new");
+            element.style.color = "purple";
+            element.style.borderBottom = "purple solid 2px";
+        }
+    }, 5)
+
     return (
         <div id={ "home" }>
             <Header siteName={ "Domov" } />
@@ -32,6 +41,13 @@ const Home = () => {
                     alt={ "Unity preview" }
                     className={ "second-image-2" }
                 />
+            </div>
+
+            <div className={ "div last" }>
+                <p className={ "second-text" }>
+                    Ak máte otázky kontakt na sprostredkovateľa nájdete <a href={ "/contacts" }>tu</a> alebo píšte na
+                    mail <p className={ "mail" } id={ "mail" }>random.mail@gmail.com</p>.
+                </p>
             </div>
         </div>
     )

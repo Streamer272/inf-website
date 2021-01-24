@@ -36,3 +36,15 @@
     float: left;
     font-size: 25px;
 }
+
+.mail {
+    border-bottom: blue solid 2px;
+    color: blue;
+    display: inline-block;
+    padding-bottom: 0;
+    cursor: pointer;
+}
+
+.last {
+    height: 90px;
+}
